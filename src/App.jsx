@@ -3,28 +3,37 @@ import './App.css';
 
 function App() {
   
-  const [Lang , setLang] = useState("en")
-  const [Color , setColor] = useState("while")
-  const [title , setTitle] = useState("25px")
-  const [text , setText] = useState("20px")
+  const [Lang , setLang] = useState("uz")
+  const [Color , setColor] = useState("red")
   const divRef = useRef()
-  const titleRef = useRef()
-  const textRef = useRef()
+  const dialog = useRef()
   const Languare = {
     en: {
-      title:"News in Uzbekistan",
-      text:`Uzbekistan is the country most prone to cryptocurrency attacks. Interview with an information security expert
-      According to the results of 2020, a ranking of cyber threats has been developed, which includes 108 countries around the world. According to its results, Uzbekistan is ranked 70th, with the lowest level of cybersecurity - 0.7121.`
+      title:"Register",
+      name:"enter the name...",
+      phone:"phone number...",
+      email:"Enter the email...",
+      password:"enter the password...",
+      button:"Login in",
+      color:"color"
     },
     ru: {
-      title:"Новости в узбекистане",
-      text:`Узбекистан - страна, наиболее подверженная атакам криптовалюты. Интервью со специалистом по информационной безопасности
-      По итогам 2020 года разработан рейтинг киберугроз, в который вошли 108 стран мира. По его результатам Узбекистан занял 70-е место с самым низким уровнем кибербезопасности - 0,7121.`
+      title:"Pегистр",
+      name:"введите имя ...",
+      phone:"телефонный номер...",
+      email:"Введите адрес электронной почты...",
+      password:"введите пароль...",
+      button:"войти в систему",
+      color:"цвет"
     },
     uz:{
-      title:"O'zbekistondagi yangiliklar",
-      text:`O‘zbekiston kriptomaynerlar hujumiga eng ko‘p uchraydigan mamlakat. Axborot xavfsizligi sohasi mutaxassisi bilan suhbat
-      2020-yil yakunlari bo‘yicha jahonning 108 mamlakatini o‘z ichiga olgan Kibertahdidlarga duchor bo‘lish reytingi ishlab chiqildi. Uning natijalariga ko‘ra O‘zbekiston 70-o‘rinda, ya’ni kiberhimoyaning eng past darajasi — 0,7121 indeks bilan baholangan`
+      title:"Ro'yxatdan o'tish",
+      name:"isminni kiriting...",
+      phone:"telefon nomering...",
+      email:"emailni kiriting...",
+      password:"parolni kiriting...",
+      button:"Tizimga kiring",
+      color:"rang"
     },
   }
   return (
@@ -36,7 +45,9 @@ function App() {
       {Lang}
       <select 
         defaultValue = {Lang}
-        onChange = {(e)=> setLang(e.target.value)}
+        onChange = {(e)=> {setLang(e.target.value)
+        }
+        }
       >
         <option value="uz">Uzbek</option>
         <option value="en">Engilish</option>
@@ -44,8 +55,9 @@ function App() {
       </select>
       <label
         className = "label"
-      >Tema
-        <input 
+      >{Languare[Lang].color}
+        <input className="color" 
+              value={Color}
               type="color" 
               onChange = {(e)=> {
               setColor(e.target.value);
@@ -53,26 +65,44 @@ function App() {
             }
           }
         />
-        <input 
-              placeholder = "fontSize"
-              type="number" 
-              onChange = {(evt)=> {
-              setTitle(evt.target.value);
-              setText(evt.target.value);
-              titleRef.current.style.fontSize = evt.target.value + "px";
-              textRef.current.style.fontSize = evt.target.value + "px";
-              
-            }
-          }
-
-        />
       </label>
+      <button
+        onClick={()=>{
+            dialog.current.open = true
+          }
+        }
 
-          <h2 ref = {titleRef}>{Languare[Lang].title}</h2>
-          <p ref = {textRef}>{Languare[Lang].text}</p>
-           
-         
-
+      >
+      {Languare[Lang].button}
+      </button>
+      <dialog className="dialog" ref={dialog} open ={false}>
+        <profil>
+            <h3 className="title">{Languare[Lang].title}</h3>
+            <input 
+              placeholder= {Languare[Lang].name}
+              type="text" 
+            />
+            <input 
+              placeholder= {Languare[Lang].phone}
+              type="number" 
+            />
+            <input 
+              placeholder= {Languare[Lang].email}
+              type="email" 
+            />
+            <input 
+              placeholder= {Languare[Lang].password}
+              type="password" 
+            />
+            <button 
+                  onClick={()=>{
+                    dialog.current.open = !true
+                  }
+                }>
+              {Languare[Lang].button}
+            </button>
+        </profil>      
+      </dialog>
       </div>
     </>
   );
@@ -80,3 +110,9 @@ function App() {
 
 
 export default App;
+
+
+
+
+         
+

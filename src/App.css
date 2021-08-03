@@ -1,15 +1,41 @@
 .bg{
   background-color: transparent;
 }
+.title{
+  font-size: 32px;
+}
 .div{
-  padding: 50px;
-  border-radius: 10%;
+  padding: 40px;
+  border-radius: 10px;
   width: 100%;
-  height: 400px;
+  height: 100vh;
   border: thin;
+  margin: 0 auto;
 }
 .label{
   display: block;
   font-size: 24px;
   margin: 40px 0px 10px 0px;
+}
+input{
+  display: block;
+  border: transparent;
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  height: 30px;
+}
+.dialog{
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#b93737,#3a3b92, #438048);
+  border: transparent;
+}
+.color{
+  display: inline-block;
+  margin-top: 5px;
 }
